@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "8b58a0a265364e8596ee6d831378a45b"
+    });
+  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,40 +75,27 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button onClick="console.log('Console  logged');">Console Log</button>
+      <button onClick="console.error('Error: Error button pressed');">Console Error</button>
+      <button onClick="console.count('Count Button Pressed');">Console Count</button>
+      <button onClick="console.warn('Warning: Warning button pressed');">Console Warn</button>
+      <button onClick="console.assert(1 > 2, 'One is not greater than two')">Console Assert</button>
+      <button onClick="console.clear()">Console Clear</button>
+      <button onClick="console.dir({data: 'dir test data'})">Console Dir</button>
+      <button onClick="console.dirxml(document.querySelector('section'))">Console dirxml</button>
+      <button onClick="console.group('group')">Console Group Start</button>
+      <button onClick="console.groupEnd('group')">Console Group End</button>
+      <button onClick="console.table([{row: 'row1', status: 'success'}, {row: 'row2', status: 'success'}])">
+        Console Table
+      </button>
+      <button onClick="console.time()">Start Timer</button>
+      <button onClick="console.timeEnd()">End Timer</button>
+      <button onClick="console.trace()">Console Trace</button>
+      <button onClick="purposefullyNotDefined()">Trigger a Global Error</button>
     </section>
   </main>
 
-  <script>
-    let form = document.querySelector('form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      let output = document.querySelector('output');
-      let firstNum = document.querySelector('#first-num').value;
-      let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
-    });
-
-    let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
-    // Start your code here
-    // You may move this JS to another file if you wish
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
